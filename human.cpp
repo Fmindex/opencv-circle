@@ -6,7 +6,7 @@ using namespace cv;
  
 int main (int argc, const char * argv[])
 {
-    string filename = "test2.mp4";
+    string filename = "test.mp4";
     VideoCapture cap(filename);
     cap.set(CV_CAP_PROP_FRAME_WIDTH, 640);
     cap.set(CV_CAP_PROP_FRAME_HEIGHT, 480);    
@@ -23,18 +23,18 @@ int main (int argc, const char * argv[])
         cap >> img;
         if (!img.data)
             continue;
-        int offset_x = 145;
+        int offset_x = 180;
         int offset_y = 80;
 
         cv::Rect roi;
-        roi.x = offset_x - 10;
-        roi.y = offset_y + 65;
+        roi.x = offset_x ;
+        roi.y = offset_y + 60;
         roi.width = img.size().width - (offset_x*2);
         roi.height = img.size().height - (offset_y*2);
         cv::Mat crop = img(roi);
         vector<Rect> found, found_filtered;
 
-        hog.detectMultiScale(crop, found, 0, Size(8,24), Size(84,84), 1.05, 2);
+        hog.detectMultiScale(crop, found, 0, Size(8,24), Size(168, 168), 1.05, 2);
 
         size_t i, j;
         for (i=0; i<found.size(); i++)
