@@ -55,7 +55,7 @@ int main (int argc, const char * argv[])
 	    r.height = cvRound(r.height*0.9);
 	    rectangle(crop, r.tl(), r.br(), cv::Scalar(0,255,0), 2);
 	}
-        imshow("video capture", img);
+        imshow("Test", img);
         if (waitKey(20) >= 0)
             break;
     }
